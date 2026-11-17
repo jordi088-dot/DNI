@@ -14,9 +14,9 @@ public class DNI {
         this.letra = letra;
         char realLetter = LETRAS[number % 23];
         if (realLetter == letra) {
-            this.number = -number;
-        } else {
             this.number = number;
+        } else {
+            this.number = -number;
         }
     }
 
@@ -56,6 +56,25 @@ public class DNI {
 
     public static String NitfForDNI(int number) {
         return number + "-" + letterForDNI(number);
+    }
+
+    public String toFormattedString() {
+        String strNumber = "" + number;
+        String s = "";
+        if(number > 900) {
+            s += "." + strNumber.substring(strNumber.length() - 3, strNumber.length());
+            if (number > 999999) {
+                s = strNumber.substring(0, strNumber.length() - 6) + "." + strNumber.substring(strNumber.length() - 6, strNumber.length() - 3) + s;
+            }
+        } else {
+            s = strNumber;
+        }
+        s += "-" + letra;
+        return s;
+    }
+
+    public char getLetter() {
+        return letra;
     }
 
     @Override

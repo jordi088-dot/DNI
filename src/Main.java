@@ -6,5 +6,6 @@ public class Main {
 
         DNI dni2 = new DNI("54788926E");
         System.out.println(dni2);
+        System.out.println(dni1.toFormattedString());
     }
 }
